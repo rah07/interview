@@ -7,6 +7,8 @@ const app=express();
 const expressLayouts = require("express-ejs-layouts");
 
 const db = require("./config/mongoose");
+
+
 const sassMiddleware = require("node-sass-middleware");
 
 app.use(
@@ -18,6 +20,7 @@ app.use(
     prefix: "/css",
   })
 );
+app.use(express.urlencoded());
 
 app.use(express.static("./assets"));
 app.use(expressLayouts);

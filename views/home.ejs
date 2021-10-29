@@ -3,39 +3,45 @@
 
         <h1>Products</h1>
 
-        <form action="" id="new-product-form" method="POST">
+        <form action="/products/create" id="new-product-form" method="POST">
+
+
 
             <div class="form-group">
                 <label for="productName">Product Name</label>
-                <input type="text" class="form-control" id="productName" aria-describedby="product" placeholder="Enter Product Name">
+                <input type="text" class="form-control" id="productName" aria-describedby="product" placeholder="Enter Product Name" name="productName">
    
               </div>
               <div class="form-group">
                 <label for="Quantity">Quantity</label>
-                <input type="number" class="form-control" id="Quantity" placeholder="Quantity">
+                <input type="number" class="form-control" id="Quantity" placeholder="Quantity" name="qtyPerUnit">
               </div>
               <div class="form-check">
-                <label class="form-check-label" for="Price">Price</label>
+                <label class="form-check-label" for="Price" >Price</label>
 
-                <input type="number" class="form-control" id="Price">
+                <input type="number" class="form-control" id="Price" name="unitPrice">
               </div>
 
               <div class="form-check">
                 <label class="form-check-label" for="Stock">Stock</label>
 
-                <input type="number" class="form-control" id="Stock">
+                <input type="number" class="form-control" id="Stock" name="unitInStock">
               </div>
 
 
-              <div class="form-check">
-                <label class="form-check-label" for="Price">Price</label>
 
-                <input type="number" class="form-control" id="Price">
-              </div>
 
+              <label class="form-check-label" >Category</label>
+
+              <select class="form-control" aria-label="Default select example" name="categoryName">
+                <option value="watch">Watch</option>
+                <option value="MObile">Mobile</option>
+              </select>
+          
               <label class="form-check-label" >Product Discontinued</label>
 
-              <select class="form-control" aria-label="Default select example">
+
+              <select class="form-control" aria-label="Default select example" name="discontinued">
                 <option value="false">False</option>
                 <option value="true">True</option>
                
@@ -50,3 +56,55 @@
 
 
         </section>
+
+
+        <div id="product-list-container">
+          <ul>
+
+            <% for(let product of products){ %>
+
+        
+             
+              <li>
+
+            
+                <%= product.productName %>
+
+
+                <!-- <div class="category">
+
+                  <form action="/category/create" method="POST">
+                
+                    <label class="form-check-label" >Category</label>
+                
+                  
+                    <select class="form-control" aria-label="Default select example" name="categoryName">
+                      <option value="watch">Watch</option>
+                      <option value="MObile">Mobile</option>
+                    </select>
+                
+                    <input type="hidden" name ="product" value="<%=product._id %>">
+                
+                    <button type="submit" value="Post_Category" class="btn btn-primary">Submit</button>
+                
+                  </form>
+                
+                
+                
+                </div>
+ -->
+
+
+
+                </li>
+
+
+            
+            <%}%>
+
+          </ul>
+</div>
+
+
+
+
