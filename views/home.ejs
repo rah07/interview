@@ -1,8 +1,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <section id="Product-Post">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
+<section id="Product-Post">
 
-        <h1>Products</h1>
+        <h1>Ecommerce <i class="fas fa-cart-plus"></i></h1>
 
+        
+<!-- create product -->
         <form action="/products/create" id="new-product-form" method="POST">
 
 
@@ -57,8 +60,11 @@
 
         </section>
 
+        <!-- display product -->
 
         <div id="product-list-container">
+
+        <h1>Product List</h1>
           <ul>
 
             <% for(let product of products){ %>
@@ -67,35 +73,45 @@
              
               <li>
 
-            
+               
+<div>
+  <h5>Product Name:</h5>
                 <%= product.productName %>
+</div>
+
+<div>                
+  <h5>Product Quantity:</h5>
+  <%= product.qtyPerUnit %>
+</div>
+<div>   
+  <h5>Product Price:</h5>
+
+  <%= product.unitPrice %>
+</div>
+<div>     
+  <h5>Product Stock:</h5>
+
+  <%= product.unitInStock %>
+</div>
+
+<div>   
+  <h5>Product Status:</h5>
+
+  <%= product.discontinued %>
+</div>
+
+<div>
+  &nbsp;            
 
 
-                <!-- <div class="category">
+     <a href="/products/delete/<%=product.id %>"><i class="fas fa-trash-alt"></i></a>
 
-                  <form action="/category/create" method="POST">
-                
-                    <label class="form-check-label" >Category</label>
-                
-                  
-                    <select class="form-control" aria-label="Default select example" name="categoryName">
-                      <option value="watch">Watch</option>
-                      <option value="MObile">Mobile</option>
-                    </select>
-                
-                    <input type="hidden" name ="product" value="<%=product._id %>">
-                
-                    <button type="submit" value="Post_Category" class="btn btn-primary">Submit</button>
-                
-                  </form>
-                
-                
-                
-                </div>
- -->
+</div>
 
+&nbsp;            
+&nbsp;            
 
-
+&nbsp;            
                 </li>
 
 
@@ -104,6 +120,8 @@
 
           </ul>
 </div>
+
+
 
 
 

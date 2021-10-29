@@ -41,22 +41,25 @@ module.exports.create = function (req, res) {
   );
 };
 
-//   product.create(
-//     {
-//       productName: req.body.productName,
-//       qtyPerUnit: req.body.qtyPerUnit,
-//       unitPrice: req.body.unitPrice,
-//       unitInStock: req.body.unitInStock,
-//       discontinued: req.body.discontinued,
-//     },
-//     function (err, product) {
-//       if (err) {
-//         console.log("error in creating a product", err);
-//         return;
-//       }
 
-//       console.log(product);
-//       return res.redirect("back");
-//     }
-//   );
-// };
+module.exports.destroy = function (req, res) {
+  product.findById(req.params.id, function (err, products) {
+    if (err) {
+      console.log("Error While delete product", err);
+
+      return;
+    }
+
+    products.remove();
+
+    category.deleteMany({ product: req.params.id }, function (err) {
+      if (err) {
+        console.log(`Error While delete product ${err}`);
+        return;
+      }
+
+      return res.redirect("back");
+    });
+  });
+};
+

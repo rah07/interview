@@ -5,7 +5,13 @@ const categorySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
+    productID: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "product",
+    },
   },
+
   {
     timestamps: true,
   }
